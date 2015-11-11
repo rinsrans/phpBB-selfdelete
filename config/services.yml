@@ -3,11 +3,7 @@ services:
         class: rinsrans\selfdelete\event\listener
         arguments:
             - @auth
-            - @config
-            - @controller.helper
-            - @dbal.conn
             - @request
-            - @template
             - @user
         tags:
             - { name: event.listener }

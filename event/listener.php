@@ -22,53 +22,22 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\auth\auth */
 	protected $auth;
 
-	/** @var \phpbb\config\config */
-	protected $config;
-
-	/** @var \phpbb\controller\helper */
-	protected $helper;
-
-	/** @var \phpbb\db\driver\driver */
-	protected $db;
-
-	/** @var \phpbb\request\request */
-	protected $request;
-
-	/** @var \phpbb\template\template */
-	protected $template;
-
 	/** @var \phpbb\user */
 	protected $user;
 
-		protected $error;
+	protected $error;
 
 	/**
 	* Constructor
 	*
 	* @param \phpbb\auth\auth					$auth			Auth object
-	* @param \phpbb\config\config               $config         Config object
-	* @param \phpbb\controller\helper           $helper         Controller helper object
-	* @param \phpbb\db\driver\driver			$db				Database object
 	* @param \phpbb\request\request				$request		Request object
-	* @param \phpbb\template\template           $template       Template object
 	* @param \phpbb\user                        $user           User object
 	*/
-	public function __construct(
-			\phpbb\auth\auth $auth,
-			\phpbb\config\config $config,
-			\phpbb\controller\helper $helper,
-			\phpbb\db\driver\driver_interface $db,
-			\phpbb\request\request $request,
-			\phpbb\template\template $template,
-			\phpbb\user $user)
-
+	public function __construct(\phpbb\auth\auth $auth, \phpbb\request\request $request, \phpbb\user $user)
 	{
 		$this->auth = $auth;
-		$this->config = $config;
-		$this->helper = $helper;
-		$this->db = $db;
 		$this->request = $request;
-		$this->template = $template;
 		$this->user = $user;
 		$this->error = array();
 
@@ -101,7 +70,7 @@ class listener implements EventSubscriberInterface
 			{
 				$this->error[] = 'CANNOT_REMOVE_FOUNDER';
 			}
-			if(!sizeof($event['error']))
+			if(!sizeof($this->error))
 			{
 				if (confirm_box(true))
 				{
