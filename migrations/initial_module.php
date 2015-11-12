@@ -7,8 +7,8 @@
 *
 */
 
-namespace rinsrans\selfdelete\migrations;
 
+namespace rinsrans\selfdelete\migrations;
 class initial_module extends \phpbb\db\migration\migration
 {
 	public function update_data()

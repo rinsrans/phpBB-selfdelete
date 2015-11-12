@@ -4,7 +4,7 @@
 	"description": "Allows user to delete her accounts by them self",
 	"homepage": "https://github.com/rinsrans/phpBB-selfdelete",
         "keywords": ["phpbb", "extension", "user", "delete"],
-	"version": "0.1.1",
+	"version": "0.1.0",
 	"license": "GPL-2.0",
 	"authors": [{
 			"name": "rinsrans",
@@ -23,10 +23,5 @@
 		"soft-require": {
 			"phpbb/phpbb": ">=3.1.4,<3.2.*@dev"
 		}
-	},
-        "version-check": {
-                "host": "phpbb-versionscheck.cf",
-                "directory": "/rinsrans/phpBB-selfdelete/master",
-                "filename": "version-check.json"
-        }
+	}
 }
