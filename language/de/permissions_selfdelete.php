@@ -32,7 +32,6 @@ if (empty($lang) || !is_array($lang))
 // Some characters you may want to copy&paste:
 // ’ » “ ” …
 //
-
 $lang = array_merge($lang, array(
 	'ACL_U_SELF_DELETE_POSTS'		=> 'Darf eigene Beiträge mit seinem Benutzer löschen',
 ));

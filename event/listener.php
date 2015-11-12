@@ -65,7 +65,7 @@ class listener implements EventSubscriberInterface
 
 	/**
 	 * Delete the user
-	 * 
+	 *
 	 * @param type $event
 	 */
 	public function ucp_profile_reg_details_data($event)
@@ -108,7 +108,7 @@ class listener implements EventSubscriberInterface
 
 	/**
 	 * Output error to the user
-	 * 
+	 *
 	 * @param array $event
 	 */
 	public function ucp_profile_reg_details_validate($event)
