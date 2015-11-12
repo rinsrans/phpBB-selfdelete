@@ -25,6 +25,9 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\user */
 	protected $user;
 
+	/** @var \phpbb\template\template */
+	protected $template;
+	
 	protected $error;
 
 	/**
@@ -33,12 +36,14 @@ class listener implements EventSubscriberInterface
 	* @param \phpbb\auth\auth					$auth			Auth object
 	* @param \phpbb\request\request				$request		Request object
 	* @param \phpbb\user                        $user           User object
+	* @param \phpbb\template			$template	Template object
 	*/
-	public function __construct(\phpbb\auth\auth $auth, \phpbb\request\request $request, \phpbb\user $user)
+	public function __construct(\phpbb\auth\auth $auth, \phpbb\request\request $request, \phpbb\user $user, \phpbb\template\template $template)
 	{
 		$this->auth = $auth;
 		$this->request = $request;
 		$this->user = $user;
+		$this->template = $template;
 		$this->error = array();
 
 	}
@@ -64,6 +69,10 @@ class listener implements EventSubscriberInterface
 		$this->user->add_lang(array('acp/common', 'acp/users'));
 		$delete_type = request_var('delete_type', '');
 		
+		$this->template->assign_vars(array(
+			'AUTH_DELETE_POSTS'		=> ($this->auth->acl_get('u_self_delete_posts')) ? true : false,
+		));
+
 		if ($event['submit'] && $delete_type)
 		{
 			if ($this->user->data['user_type'] == USER_FOUNDER)
@@ -74,6 +83,7 @@ class listener implements EventSubscriberInterface
 			{
 				if (confirm_box(true))
 				{
+					$delete_type = ($this->auth->acl_get('u_self_delete_posts')) ? $delete_type : 'remove';
 					user_delete($delete_type, $this->user->data['user_id'], $this->user->data['username']);
 					add_log('admin', 'LOG_USER_DELETED', $this->user->data['username']);
 					trigger_error($this->user->lang['USER_DELETED'] . '<br /><br />' . sprintf($this->user->lang['RETURN_INDEX'], '<a href="' . generate_board_url() . '">', '</a>'));

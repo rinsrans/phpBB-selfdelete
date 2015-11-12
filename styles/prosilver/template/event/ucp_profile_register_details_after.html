@@ -1,4 +1,8 @@
 <dl>
-    <dt><label for="delete_user">{L_DELETE_USER}{L_COLON}</label><br /><span>{L_DELETE_USER_EXPLAIN}</span></dt>
+    <dt><label for="delete_type">{L_DELETE_USER}{L_COLON}</label><br /><span>{L_DELETE_USER_EXPLAIN}</span></dt>
+    <!-- IF AUTH_DELETE_POSTS -->
     <dd><select id="delete_type" name="delete_type"><option class="sep" value="">{L_SELECT_OPTION}</option><option value="retain">{L_RETAIN_POSTS}</option><option value="remove">{L_DELETE_POSTS}</option></select></dd>
+    <!-- ELSE -->
+    <dd><input type="checkbox" name="delete_type" id="delete_type" /></dd>
+    <!-- ENDIF -->
 </dl>

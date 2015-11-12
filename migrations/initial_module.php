@@ -14,7 +14,7 @@ class initial_module extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return array(
-			array('permission.add', array('u_self_delete', true, 'a_board')),
+			array('permission.add', array('u_self_delete_posts', true, 'a_board')),
 		);
 	}
 }
