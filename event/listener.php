@@ -63,13 +63,18 @@ class listener implements EventSubscriberInterface
 		);
 	}
 
+	/**
+	 * Delete the user
+	 * 
+	 * @param type $event
+	 */
 	public function ucp_profile_reg_details_data($event)
 	{
 		$this->user->add_lang(array('acp/common', 'acp/users'));
 		$delete_type = request_var('delete_type', '');
 
 		$this->template->assign_vars(array(
-			'AUTH_DELETE_POSTS'		=> ($this->auth->acl_get('u_self_delete_posts')) ? true : false,
+			'AUTH_DELETE_POSTS'	=> ($this->auth->acl_get('u_self_delete_posts')) ? true : false,
 		));
 
 		if ($event['submit'] && $delete_type)
