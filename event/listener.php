@@ -63,6 +63,11 @@ class listener implements EventSubscriberInterface
 		);
 	}
 
+	/**
+	 * Delete the user
+	 * 
+	 * @param type $event
+	 */
 	public function ucp_profile_reg_details_data($event)
 	{
 		$this->user->add_lang(array('acp/common', 'acp/users'));
