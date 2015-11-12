@@ -27,7 +27,8 @@ class listener implements EventSubscriberInterface
 
 	/** @var \phpbb\template\template */
 	protected $template;
-	
+
+	/** @var variable */
 	protected $error;
 
 	/**
@@ -36,7 +37,7 @@ class listener implements EventSubscriberInterface
 	* @param \phpbb\auth\auth					$auth			Auth object
 	* @param \phpbb\request\request				$request		Request object
 	* @param \phpbb\user                        $user           User object
-	* @param \phpbb\template			$template	Template object
+	* @param \phpbb\template					$template		Template object
 	*/
 	public function __construct(\phpbb\auth\auth $auth, \phpbb\request\request $request, \phpbb\user $user, \phpbb\template\template $template)
 	{
@@ -45,7 +46,6 @@ class listener implements EventSubscriberInterface
 		$this->user = $user;
 		$this->template = $template;
 		$this->error = array();
-
 	}
 
 	/**
@@ -62,13 +62,12 @@ class listener implements EventSubscriberInterface
 			'core.ucp_profile_reg_details_validate'				=> 'ucp_profile_reg_details_validate',
 		);
 	}
-	
-	
+
 	public function ucp_profile_reg_details_data($event)
 	{
 		$this->user->add_lang(array('acp/common', 'acp/users'));
 		$delete_type = request_var('delete_type', '');
-		
+
 		$this->template->assign_vars(array(
 			'AUTH_DELETE_POSTS'		=> ($this->auth->acl_get('u_self_delete_posts')) ? true : false,
 		));
@@ -79,7 +78,7 @@ class listener implements EventSubscriberInterface
 			{
 				$this->error[] = 'CANNOT_REMOVE_FOUNDER';
 			}
-			if(!sizeof($this->error))
+			if (!sizeof($this->error))
 			{
 				if (confirm_box(true))
 				{
@@ -102,10 +101,14 @@ class listener implements EventSubscriberInterface
 		}
 	}
 
+	/**
+	 * Output error to the user
+	 * 
+	 * @param array $event
+	 */
 	public function ucp_profile_reg_details_validate($event)
 	{
 		$this->error = array_merge($this->error, $event['error']);
-
 		$event['error'] = $this->error;
 	}
 }

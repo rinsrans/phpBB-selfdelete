@@ -1,0 +1,11 @@
+{
+	"stable": {
+		"1.1": {
+			"current": "0.1.1",
+			"download": "https://rinsrans.ml/extensions.html#e4",
+			"announcement": "",
+			"eol": null,
+			"security": false
+		}
+	}
+}
