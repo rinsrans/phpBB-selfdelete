@@ -12,8 +12,8 @@ Licence
 <a href="http://opensource.org/licenses/gpl-2.0.php">GNU General Public License v2</a>
 
 <br /><br />
-<a href="https://phpbb-extensions.ga/extensions/rinsrans/phpBB-selfdelete.html">
-    <img src="http://phpbb-extensions.ga/rinsrans/phpBB-selfdelete.png" alt="rating" />
+<a href="https://phpbb-extensions.ga/extensions/rinsrans/selfdelete.html">
+    <img src="http://phpbb-extensions.ga/rinsrans/selfdelete.png" alt="rating" />
 </a>
 <br /><br />
 [![Build Status](https://travis-ci.org/rinsrans/phpBB-selfdelete.svg)](https://travis-ci.org/rinsrans/phpBB-selfdelete)
